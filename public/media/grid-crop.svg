@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#f7f4ee"/>
+  <g stroke="#141414" stroke-opacity="0.28" stroke-width="1">
+    <path d="M40 40H760M40 110H760M40 180H760M40 250H760M40 320H760M40 390H760M40 460H760M40 530H760"/>
+    <path d="M40 40V560M110 40V560M180 40V560M250 40V560M320 40V560M390 40V560M460 40V560M530 40V560M600 40V560M670 40V560M740 40V560"/>
+  </g>
+  <rect x="460" y="250" width="70" height="70" fill="#d63028"/>
+</svg>
