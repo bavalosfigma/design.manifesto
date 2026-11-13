@@ -4,6 +4,8 @@ import 'dialkit/styles.css'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import CodeTrail from './components/CodeTrail.vue'
 
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const open = ref(false)
 const shown = ref(false)
 const triggerEl = ref(null)
@@ -37,7 +39,7 @@ const videoShown = ref(false)
 const videoCloseEl = ref(null)
 const videoTriggerEl = ref(null)
 const videoEl = ref(null)
-const videoSrc = ref('/codelayer.mp4')
+const videoSrc = ref(asset('codelayer.mp4'))
 const videoLabel = ref('Code on the canvas')
 const codeOn = ref(false)
 const codeKey = ref(0)
@@ -84,15 +86,15 @@ const comments = [
 ].map((comment, index) => ({ ...comment, ...commentPalette[index % commentPalette.length] }))
 
 const photos = [
-  { src: '/photos/01.jpg', alt: 'People arranging flowers around a low table by the windows' },
-  { src: '/photos/02.jpg', alt: 'Two people arranging sweet peas at a blue table' },
-  { src: '/photos/03.jpg', alt: 'A talk projected on a screen, the slide reading Disable Taste' },
-  { src: '/photos/04.jpg', alt: 'A person standing in front of a wide landscape painting' },
-  { src: '/photos/05.jpg', alt: 'A speaker presenting a slide titled The New Workflows' },
-  { src: '/photos/06.jpg', alt: 'Two people smiling beside an espresso bar sign' },
-  { src: '/photos/07.jpg', alt: 'A woman leading a workshop beside a whiteboard' },
-  { src: '/photos/08.jpg', alt: 'A crowd gathered in a workshop room' },
-  { src: '/photos/09.jpg', alt: 'A large group seated and standing together for a photo' },
+  { src: asset('photos/01.jpg'), alt: 'People arranging flowers around a low table by the windows' },
+  { src: asset('photos/02.jpg'), alt: 'Two people arranging sweet peas at a blue table' },
+  { src: asset('photos/03.jpg'), alt: 'A talk projected on a screen, the slide reading Disable Taste' },
+  { src: asset('photos/04.jpg'), alt: 'A person standing in front of a wide landscape painting' },
+  { src: asset('photos/05.jpg'), alt: 'A speaker presenting a slide titled The New Workflows' },
+  { src: asset('photos/06.jpg'), alt: 'Two people smiling beside an espresso bar sign' },
+  { src: asset('photos/07.jpg'), alt: 'A woman leading a workshop beside a whiteboard' },
+  { src: asset('photos/08.jpg'), alt: 'A crowd gathered in a workshop room' },
+  { src: asset('photos/09.jpg'), alt: 'A large group seated and standing together for a photo' },
 ]
 
 const scrim = computed(() => Math.max(0.25, 1 - pull.value / 460))
@@ -193,7 +195,7 @@ function onDrawerOutsidePointerDown(event) {
   closeDrawer()
 }
 
-async function openVideo(src = '/codelayer.mp4', label = 'Code on the canvas', returnEl) {
+async function openVideo(src = asset('codelayer.mp4'), label = 'Code on the canvas', returnEl) {
   clearTimeout(videoCloseTimer)
   const switching = videoShown.value && videoSrc.value !== src
   videoSrc.value = src
@@ -231,17 +233,17 @@ function closeVideo() {
 function openWalkthrough(post) {
   drawerReturnsFocus = false
   closeDrawer()
-  openVideo('/walthrough.mov', post.title, drawerTriggerEl.value)
+  openVideo(asset('walthrough.mov'), post.title, drawerTriggerEl.value)
 }
 
 const cursorAssets = [
-  { src: '/cursors/Property%201=cursor-multiplayer-purple.svg', d: '0.02s', dx: 78, dy: 52 },
-  { src: '/cursors/Property%201=cursor-multiplayer-yellow.svg', d: '0.24s', dx: -92, dy: 40 },
-  { src: '/cursors/Property%201=cursor-multiplayer-green.svg', d: '0.1s', dx: 46, dy: 96 },
-  { src: '/cursors/Property%201=cursor-multiplayer-blue.svg', d: '0.36s', dx: -70, dy: -84 },
-  { src: '/cursors/Property%201=cursor-multiplayer-pink.svg', d: '0.16s', dx: 88, dy: -44 },
-  { src: '/cursors/Property%201=cursor-multiplayer-red.svg', d: '0.3s', dx: -96, dy: -36 },
-  { src: '/cursors/Property%201=cursor-multiplayer-gray.svg', d: '0.44s', dx: 72, dy: 36 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-purple.svg'), d: '0.02s', dx: 78, dy: 52 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-yellow.svg'), d: '0.24s', dx: -92, dy: 40 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-green.svg'), d: '0.1s', dx: 46, dy: 96 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-blue.svg'), d: '0.36s', dx: -70, dy: -84 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-pink.svg'), d: '0.16s', dx: 88, dy: -44 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-red.svg'), d: '0.3s', dx: -96, dy: -36 },
+  { src: asset('cursors/Property%201=cursor-multiplayer-gray.svg'), d: '0.44s', dx: 72, dy: 36 },
 ]
 
 const cursorSpots = [
